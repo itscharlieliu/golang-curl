@@ -1,4 +1,4 @@
-package mockApi
+package mock
 
 import (
 	"fmt"

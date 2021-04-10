@@ -1,7 +1,21 @@
 package main
 
-import "fmt"
+import (
+	"flag"
+	"fmt"
+	"net/http"
+)
 
 func main() {
-	fmt.Println("Hello world")
+	flag.Parse()
+
+	args := flag.Args()
+
+	resp, err := http.Get(args[1])
+
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println(resp)
 }
