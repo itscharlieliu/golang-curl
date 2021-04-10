@@ -11,11 +11,13 @@ func main() {
 
 	args := flag.Args()
 
-	resp, err := http.Get(args[1])
+	fmt.Println(args[0])
+
+	resp, err := http.Get(args[0])
 
 	if err != nil {
 		panic(err)
 	}
 
-	fmt.Println(resp)
+	fmt.Println(resp.Body)
 }
