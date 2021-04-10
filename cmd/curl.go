@@ -25,5 +25,7 @@ func main() {
 
 	pkg.CheckErr(err)
 
-	fmt.Println(body)
+	result := string(body)
+
+	fmt.Println(result)
 }
