@@ -3,7 +3,10 @@ package main
 import (
 	"flag"
 	"fmt"
+	"io"
 	"net/http"
+
+	"github.com/itscharlieliu/golang-curl/pkg"
 )
 
 func main() {
@@ -15,9 +18,12 @@ func main() {
 
 	resp, err := http.Get(args[0])
 
-	if err != nil {
-		panic(err)
-	}
+	pkg.CheckErr(err)
 
-	fmt.Println(resp.Body)
+	defer resp.Body.Close()
+	body, err := io.ReadAll(resp.Body)
+
+	pkg.CheckErr(err)
+
+	fmt.Println(body)
 }
